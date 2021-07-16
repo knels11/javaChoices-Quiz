@@ -1,40 +1,76 @@
+console.log("attached");
 
+alert("Are you ready to test your javascript knowledge?")
 
+//var timerEl = document.getElementById('countdown');
+//var mainEl = document.getElementById('main');
+//var startBtn = document.getElementById('start');
 
-   function get1MinuteFromNow() {
-    return new Date(new Date().valueOf() + 15 * 24 * 60 * 60 * 1000);
-}
+//function countdown() {
+  //  var timeLeft = 300;
 
-$('#clock-c').countdown(get1MinuteFromNow(), function(event) {
-  var $this = $(this).html(event.strftime(
-    '<span class="h1 font-weight-bold">%M</span> Min'
-    + '<span class="h1 font-weight-bold">%S</span> Sec'));
-});
+    //var timeInterval = setInterval(function() {
+      //  if (timeLeft > 1 ) {
+        //    timerEl.textContent = timeLeft + ' seconds remaining';
+          //  timeLeft--;
+        //} else if (timeLeft === 1) {
+          //  timerEl.textContent = timeLeft + 'second remaining';
+            //timeLeft--;
+        //} else {
+         //   timerEl.textContent = '';
+           // clearInterval(timeInterval);
+            //displayMessage();
+        //}
+//    }, 1000);
+//}
+//function displayMessage() {
+  //  var wordCount = 0;
+    //var msgInterval = setInterval(function(){
+      //  if (words[wordCount] === undefined) {
+        //    clearInterval(msgInterval);
+        //} else {
+          //  mainEl.textContent = words[wordCount];
+            //wordCount++;
+        //}
+   // }, 300);
+//}
+//startBtn.onclick = countdown;
 
-/*  CALL TO ACTIONS FOR COUNTDOWN  */
-$('#btn-reset').click(function() {
-    $('#clock-c').countdown(get1MinuteFromNow());
-});
-$('#btn-pause').click(function() {
-    $('#clock-c').countdown('pause');
-});
-$('#btn-resume').click(function() {
-    $('#clock-c').countdown('resume');
-});
+//question object array
+var questions = [
+    { Q1: 'Inside which HTML element do we put the js?', a: 'script'},
+    { Q2: 'What is a var in terms of javascript?', a: 'a name assigned to a literal value or object'},
+    { Q3: 'read as js statement and solve: consolelog(2.0=="2"== newBoolean(true)=="1")', a: 'true'},
+    { Q4: 'Explain the keyword this.', a: 'refers to the object that the function is a property of.'},
+    { Q5: 'HTML, Javascript, or CSS?', a: 'Javascript'},
+];
 
+//start the js quiz with score of 0
+var quizScore = 0;
+//loop over question object array
+for (var i = 0; i < questions.length; i++) {
+//display current question to user, ask ok or cancel
+    var answer = confirm(  questions[i].q  );
+    if (
+        (answer === true && questions[i].a === 't') ||
+        (answer === false && questions[i].a === 'f')
+    ){
+//increase score
+        score++;
+//alert user if question is right or wrong
+  //      alert('correct');
+  //  } else {
+   //     alert('wrong');
+  //  }
+//};
 
-function result() {
-    var score= 0;
-
-if(document.getElementById('correct-answer').checked)
-{
-    score++;
-}
-if(document.getElementById('wrong-answer').checked)
-{
-    score--;
-}
-}
-alert("Your score is:" +score+ "points"); 
-
-console.log(score)
+var quizEnd = function() {
+    if (quizScore < 4 || quizScore === 4){
+//show total at end of quiz
+alert('you got' + quizScore + '/5' + questions.length);
+    }
+    else if (quizScore === 5) {
+        alert("your score is" + quizScore + '/5' + questions.length + '.' + "Not bad, you aced the test!");
+    }
+};
+quizEnd();
