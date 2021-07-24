@@ -83,7 +83,7 @@ answers: [
           }
       };
       quizEnd();
-
+buttonEl.addEventListener('click', quizBoxHandler);
 
 
 //var timerEl = document.getElementById('countdown');
