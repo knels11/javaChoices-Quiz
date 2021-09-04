@@ -1,7 +1,5 @@
 console.log("attached");
 
-window.alert("Are you ready to test your javascript knowledge?");
-
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
 var submitQuiz = document.getElementById('results')
@@ -10,6 +8,7 @@ var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-options')
 var buttonEl = document.getElementById('')
 var answerButtons = document.getElementsByClassName('btn')
+var resultsButton = document.getElementById('submit')
 var questionTxtContainer = document.getElementById('question-txt')
 var questionNumber = 0
 var timerDivEl = document.getElementById('timer')
@@ -63,9 +62,12 @@ const questions = [
     ]
   },
 ]
+
+//event listeners for start, next and submit (results) button 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', nextQuestion)
 resultsButton.addEventListener('click', endGame)
+
 //start quiz
 function startGame() {
   //create timer
@@ -73,7 +75,7 @@ function startGame() {
     timerDivEl.innerHTML = count--;
     if(count == 1) clearInterval(timer);
 }, 1000);
-
+//hide the start button once the quiz begins
   startButton.setAttribute('class', 'hide')
   questionTxtContainer.textContent= questions[0].question
 }
@@ -115,5 +117,8 @@ function nextQuestion(event) {
 function endGame() {
   console.log(resultsButton);
 }
+
+
+
 
 //buttonEl.addEventListener('click', quizBoxHandler);
